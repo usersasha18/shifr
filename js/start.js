@@ -24,7 +24,7 @@ form.addEventListener(
                 `${name} ${surname}`
             );
             window.location.href =
-                "index.html";
+                "viktorina.html";
         }
 
     }
