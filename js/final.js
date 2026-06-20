@@ -12,11 +12,8 @@ async function showFinalModal() {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    username: myObject.name,
-                    total: myObject.score,
-                    correct: myObject.score - myObject.wrong,
-                    wrong: myObject.wrong
+                 body: JSON.stringify({
+                  answer: JSON.stringify(myObject)
                 })
             }
         );
