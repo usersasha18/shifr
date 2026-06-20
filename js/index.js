@@ -93,7 +93,7 @@ function showRetryModal() {
                   <li>можно ли проверить информацию?</li>
                 </ul>
             </p>
-            <button id="close">Вернуться к предыдущему вопросу.</button>
+            <button id="close">Вернуться к вопросу.</button>
         </div>
     `;
 
