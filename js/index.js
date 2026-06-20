@@ -84,9 +84,16 @@ function showRetryModal() {
 
     modalScore.innerHTML = `
         <div class="modal-content">
-            <h2>❌ Неверно</h2>
-            <p>Попробуй ещё раз</p>
-            <button id="close">Продолжить</button>
+            <h2>❌Осторожно</h2>
+            <p>Подумай ещё:
+                <ul>
+                  <li>кто отправитель?</li>
+                  <li>просят ли пароль?</li>
+                  <li>есть ли давление или срочность?</li>
+                  <li>можно ли проверить информацию?</li>
+                </ul>
+            </p>
+            <button id="close">Вернуться к предыдущему вопросу.</button>
         </div>
     `;
 
