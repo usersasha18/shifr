@@ -130,30 +130,5 @@ function checkFinish() {
 }
 function showFinalModal() {
 
-    const user = localStorage.getItem("username") || "Пользователь";
-
-    modalScore.style.display = "flex";
-
-    modalScore.innerHTML = `
-        <div class="modal-content">
-            <h2>🏁 Квиз завершён</h2>
-
-            <p><b>${user}</b></p>
-
-            <p>✔ Правильных ответов: ${score}</p>
-            <p>❌ Неправильных ответов: ${wrong}</p>
-
-            <h3>
-                Вы набрали ${score} баллов
-            </h3>
-
-            <button id="close">Закрыть</button>
-        </div>
-    `;
-
-    document
-        .querySelector("#close")
-        .addEventListener("click", () => {
-            modalScore.style.display = "none";
-        });
+    window.location.href = "final.html"
 }
