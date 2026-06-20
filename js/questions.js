@@ -1,6 +1,7 @@
 const data = [
     {
         question: "Что из этого редактор кода?",
+        text: "",
         answers: [
             "VS code",
             "HTML",
