@@ -1,13 +1,33 @@
-function showFinalModal() {
-    
-    const user = localStorage.getItem("username") || "Пользователь";
+async function showFinalModal() {
+    const element = document.querySelector('#score-content');
 
-    const element = document.querySelector('#score-content')
     const jsonString = localStorage.getItem('quizResult');
     const myObject = JSON.parse(jsonString);
-    console.log(myObject);
-    
-        element.innerHTML = `
+
+    try {
+        const response = await fetch(
+            "https://viktorina-backend.onrender.com/submit",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: myObject.name,
+                    total: myObject.score,
+                    correct: myObject.score - myObject.wrong,
+                    wrong: myObject.wrong
+                })
+            }
+        );
+
+        console.log(await response.json());
+
+    } catch (err) {
+        console.error("Ошибка отправки:", err);
+    }
+
+    element.innerHTML = `
         <div class="score-content">
             <h2>🏁 Квиз завершён</h2>
 
@@ -19,4 +39,4 @@ function showFinalModal() {
     `;
 }
 
-showFinalModal()
+showFinalModal();
