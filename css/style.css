@@ -328,6 +328,13 @@ body {
 
 @media (max-width: 768px) {
 
+    .inner-title-start {
+        font-size: 39px !important;
+        text-align: left !important;
+    }
+    .left-start-page > p {
+        font-size: 15px !important;
+    }
     body.dark-theme {
         padding: 20px;
 
