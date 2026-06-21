@@ -287,3 +287,154 @@ body.dark-theme {
     border-color: #fca5a5 !important;
     box-shadow: 0 0 18px rgba(239, 68, 68, 0.6);
 }
+
+/* ========================= */
+/* АДАПТИВ */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    body.dark-theme {
+        padding: 20px;
+        align-items: flex-start;
+    }
+
+    .wrapper {
+        width: 100%;
+
+        max-width: 100%;
+
+        padding: 28px 22px;
+
+        border-radius: 20px;
+    }
+
+    .title {
+        font-size: 26px;
+
+        margin-bottom: 28px;
+    }
+
+    #root {
+        font-size: 18px;
+
+        margin-bottom: 22px;
+
+        line-height: 1.4;
+    }
+
+    #answers {
+        gap: 12px;
+    }
+
+    #answers label,
+    .answer-tile {
+        padding: 16px;
+
+        gap: 12px;
+
+        border-radius: 14px;
+    }
+
+    .answer-tile span {
+        font-size: 16px;
+
+        line-height: 1.35;
+    }
+
+    #answers input[type="checkbox"] {
+        min-width: 22px;
+
+        height: 22px;
+    }
+
+    #changeTheme {
+        margin-top: 26px;
+
+        padding: 16px;
+
+        font-size: 16px;
+    }
+
+    .modal-score {
+        width: calc(100% - 32px);
+
+        max-width: 420px;
+
+        padding: 24px;
+
+        border-radius: 16px;
+    }
+
+    #close {
+        width: 100%;
+
+        padding: 14px;
+
+        font-size: 16px;
+    }
+
+}
+
+
+/* Очень маленькие телефоны */
+
+@media (max-width: 480px) {
+
+    body.dark-theme {
+        padding: 14px;
+    }
+
+    .wrapper {
+        padding: 22px 18px;
+
+        border-radius: 18px;
+    }
+
+    .title {
+        font-size: 22px;
+
+        margin-bottom: 20px;
+    }
+
+    #root {
+        font-size: 16px;
+    }
+
+    #answers label,
+    .answer-tile {
+        padding: 14px;
+
+        gap: 10px;
+    }
+
+    .answer-tile span {
+        font-size: 15px;
+    }
+
+    #changeTheme {
+        padding: 14px;
+
+        font-size: 15px;
+    }
+
+    .modal-score {
+        width: calc(100% - 24px);
+
+        padding: 20px;
+    }
+
+}
+
+
+/* Большие телефоны / маленькие планшеты */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .wrapper {
+        width: 90%;
+
+        max-width: 760px;
+    }
+
+}
