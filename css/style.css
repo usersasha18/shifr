@@ -309,6 +309,33 @@ body.dark-theme {
         border-radius: 20px;
     }
 
+    .start-page {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    width: 100%;
+}
+
+.start-form {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.start-form input {
+    display: block;
+
+    width: 100%;
+
+    min-width: 0;
+
+    max-width: 100%;
+}
     .title {
         font-size: 26px;
 
@@ -435,6 +462,130 @@ body.dark-theme {
         width: 90%;
 
         max-width: 760px;
+    }
+
+}
+
+/* ========================= */
+/* iPhone 11 / 12 / 13 / 14 */
+/* 390 × 844 */
+/* ========================= */
+
+@media (max-width: 430px) {
+    .title-start {
+        font-size: 34px !important;
+    }
+
+    body.dark-theme {
+        padding: 16px;
+
+        align-items: center;
+    }
+
+    .wrapper {
+        width: 100%;
+
+        max-width: 100%;
+
+        padding: 24px 18px;
+
+        border-radius: 18px;
+    }
+
+    .title {
+        font-size: 24px;
+
+        margin-bottom: 22px;
+    }
+
+    #root {
+        font-size: 17px;
+
+        line-height: 1.45;
+
+        margin-bottom: 20px;
+    }
+
+    .start-page {
+        padding: 45px !important;
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 14px;
+
+        width: 100%;
+    }
+
+    .start-form {
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+    .start-form input {
+        width: 100%;
+
+        max-width: 100%;
+
+        min-width: 0;
+
+        padding: 14px;
+    }
+
+    #answers {
+        gap: 10px;
+    }
+
+    #answers label,
+    .answer-tile {
+        width: 100%;
+
+        padding: 14px;
+
+        gap: 10px;
+
+        border-radius: 14px;
+    }
+
+    .answer-tile span {
+        font-size: 15px;
+
+        line-height: 1.35;
+    }
+
+    #answers input[type="checkbox"] {
+        min-width: 20px;
+
+        height: 20px;
+    }
+
+    #changeTheme {
+        width: 100%;
+
+        padding: 15px;
+
+        margin-top: 20px;
+
+        font-size: 16px;
+    }
+
+    .modal-score {
+        width: calc(100% - 24px);
+
+        padding: 22px;
+
+        border-radius: 16px;
+    }
+
+    #close {
+        width: 100%;
+
+        padding: 14px;
+
+        margin-top: 16px;
     }
 
 }
