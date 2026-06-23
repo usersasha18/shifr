@@ -4,10 +4,14 @@ const answers = document.querySelector('#answers');
 const modalScore = document.querySelector(".modal-score");
 const modalOverlay = document.querySelector('.modal-overlay');
 
+const xpCount = document.querySelector('.xp-count').textContent = '0';
+const questionBarFill = document.querySelector('.question-bar-fill').style.width = '0';
+const progressText = document.querySelector('#progress-text').textContent = '0';
+
 let score = 0;
 let answerIndex = 0;
-
-
+let answered = 0
+let xp = 0;
 let wrong = 0;
 
 
@@ -56,29 +60,42 @@ function checkAnswer() {
     if (radioAnswer === correctAnswer) {
 
         score++;
+        xp += 100;
 
         allLabels[radioAnswer - 1].classList.add("correct");
-
-        setTimeout(() => {
-            answerIndex++;
-            toggleButton.disabled = false;
-            showQuestion();
-            checkFinish();
-        }, 700);
 
     } else {
 
         wrong++;
+        xp -= 50;
+        if (xp < 0) xp = 0;
 
         allLabels[radioAnswer - 1].classList.add("wrong");
 
         showRetryModal();
-
-        setTimeout(() => {
-            toggleButton.disabled = false;
-        }, 500);
     }
+
+    // 🔥 ВСЕГДА обновляем прогресс одинаково
+    const progress = ((answerIndex + 1) / data.length) * 100;
+
+    document.querySelector('.question-bar-fill').style.width =
+        progress + '%';
+
+    document.querySelector('#progress-text').textContent =
+        Math.round(progress) + '%';
+
+    document.querySelector('.xp-count').textContent =
+        xp + ' XP';
+
+    setTimeout(() => {
+        answerIndex++;
+        toggleButton.disabled = false;
+        showQuestion();
+        checkFinish();
+    }, 700);
+
 }
+
 
 function showRetryModal() {
     modalScore.style.display = "flex";
@@ -87,15 +104,10 @@ function showRetryModal() {
     modalScore.innerHTML = `
         <div class="modal-content">
             <h2 class="modal-text-title">❌Осторожно</h2>
-                <p> <span class="sub-text-modal">Подумай ещё:</span>
-                    <ul class="modal-list">
-                        <li>кто отправитель?</li>
-                        <li>просят ли пароль?</li>
-                        <li>есть ли давление или срочность?</li>
-                        <li>можно ли проверить информацию?</li>
-                    </ul>
+                <p> 
+                    <span class="sub-text-modal">Хорошенько думай над вопросами!)</span>
                 </p>
-                <button id="close">Вернуться к вопросу.</button>
+                <button id="close">Вернуться к вопросам.</button>
             </div>
         `
     ;
@@ -109,19 +121,6 @@ function showRetryModal() {
         });
 }
 
-function showModalResult() {
-    modalScore.classList.add("showModal");
-    modalScore.style.opacity = 1;
-    const resultHTML = `
-        <h2>Ваш скор ${score} из ${data.length}</h2>
-        <button id="close">Закрыть окно</button>
-    `;
-    modalScore.innerHTML = resultHTML;
-
-
-    const closeButton = document.querySelector('#close');
-    closeButton.addEventListener("click", closeModal);
-}
 
 function closeModal() {
     modalScore.style.display = "none";
@@ -136,6 +135,7 @@ function checkFinish() {
                 score: score,
                 wrong: wrong,
                 total: data.length,
+                xp: xp,
                 name: localStorage.getItem("username")
             })
         );
@@ -143,6 +143,8 @@ function checkFinish() {
 
     }
 }
+
+
 
 
 

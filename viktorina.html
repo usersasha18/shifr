@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="dark-theme">
+    
+        <div class="intro-box">
+            <div class="inner-intro-box">
+                <h1>
+                    Пройди испытание и узнай свой уровень в кибер-мире
+                </h1>
+                <p>
+                    Это не просто тест — это твоя первая миссия в мире цифровой безопасности.
+                    Каждый ответ влияет на твой результат, а в конце ты узнаешь,
+                    кем ты стал: новичком, хакером или кибер-магистром.
+                </p>
+            </div>
+    </div>
     <div class="wrapper">
         <h1 class="title">Викторина</h1>
         <div id="root">
@@ -23,6 +36,24 @@
         </div>
         <button id="changeTheme">Ответить</button>
     </div>
+    <div class="xp-block">
+        <h2 class="">Количество набранных очков</h2>
+        <div class="xp-count">0</div>
+
+        <div class="progress-container">
+            <div class="progress-info">
+                <span>Прогресс прохождения</span>
+                <span id="progress-text">0%</span>
+            </div>
+
+            <div class="question-bar">
+                <div class="question-bar-fill"></div>
+            </div>
+        </div>
+
+    </div>
+    <script src="js/countxp.js"></script>
+    <script src="js/closeModal.js"></script>
     <script src="js/questions.js"></script>
     <script src="js/index.js"></script>
 </body>

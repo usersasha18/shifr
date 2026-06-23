@@ -3,15 +3,24 @@ function showFinalModal() {
 
     const jsonString = localStorage.getItem('quizResult');
     const myObject = JSON.parse(jsonString);
-
+    const xp = myObject.xp
     element.innerHTML = `
         <div class="score-content">
             <h2>🏁 Квиз завершён</h2>
 
             <p><b>${myObject.name}</b></p>
-            <p>Всего вопросов ${myObject.score}</p>
-            <p><b>Правильных ответов:</b> ${myObject.score - myObject.wrong}</p>
-            <p><b>Неправильных ответов:</b> ${myObject.wrong}</p>
+            <p>Правильных овтетов ${myObject.score} из ${myObject.total}</p>
+            <h1>Ты набрал ${myObject.xp} очков, твой уровень ${
+                myObject.xp < 200 ? "Новичок 🐣" :
+                myObject.xp < 400 ? "Ученик 🧑‍💻" :
+                myObject.xp < 600 ? "Стажёр 🕵️" :
+                myObject.xp < 800 ? "Начинающий хакер 🔓" :
+                myObject.xp < 1000 ? "Хакер ⚡" :
+                myObject.xp < 1150 ? "Опытный хакер 🧠" :
+                myObject.xp < 1250 ? "Кибер-специалист 🛡️" :
+                myObject.xp < 1350 ? "Элитный хакер 💀" :
+                "Легенда кибербезопасности 👑"
+            } </h1>
         </div>
     `;
 

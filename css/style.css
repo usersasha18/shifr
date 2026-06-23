@@ -12,8 +12,9 @@ body.dark-theme {
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: 20px;
+    gap: 1rem;
     align-items: center;
-
     background: linear-gradient(
         135deg,
         #141420,
@@ -366,9 +367,165 @@ body.dark-theme {
 /* ========================= */
 /* АДАПТИВ */
 /* ========================= */
+.intro-box {
+    position: fixed;
+    inset: 0;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(56, 0, 147, 0.696);
+
+    z-index: 9999;
+
+    /* скрыто по умолчанию */
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(0.95);
+    transition: 0.5s ease;
+}
+
+.intro-box.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+.inner-intro-box {
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #5b2ba7;
+    border-radius: 15px;
+    border: 1px solid #9333ea;
+}
+.inner-intro-box > h1 {
+    margin-bottom: 2rem;
+}
+.inner-intro-box > p {
+    font-size: 20px;
+    line-height: 2.5rem;
+}
 body {
     overflow-x: hidden;
+}
+
+
+.xp-block {
+    width: 100%;
+
+    padding: 22px;
+
+    margin-bottom: 24px;
+
+    background: #231d3d;
+
+    border: 2px solid #8b5cf6;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 24px rgba(139,92,246,.25);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.xp-title {
+    font-size: 22px;
+
+    color: #d8b4fe;
+
+    text-align: center;
+}
+
+.xp-count {
+    font-size: 44px;
+
+    font-weight: 800;
+
+    text-align: center;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 18px rgba(216,180,254,.6);
+
+    transition: .3s;
+}
+
+.progress-container {
+    width: 100%;
+}
+
+.progress-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+
+    color: #d8b4fe;
+
+    font-size: 15px;
+}
+
+.question-bar {
+    width: 100%;
+
+    height: 14px;
+
+    background: #151124;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+.question-bar-fill {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8b5cf6,
+            #d946ef,
+            #22c55e
+        );
+
+    transition:
+        width .5s ease;
+}
+
+/* телефон */
+
+@media (max-width: 430px) {
+
+    .xp-block {
+        padding: 18px;
+    }
+
+    .xp-title {
+        font-size: 18px;
+    }
+
+    .xp-count {
+        font-size: 34px;
+    }
+
+    .question-bar {
+        height: 12px;
+    }
 }
 
 
@@ -388,6 +545,24 @@ body {
 /* Телефоны */
 
 @media (max-width: 768px) {
+    .dark-theme {
+        flex-wrap: wrap ;
+    }
+    .intro-box {
+        margin: 10px    ;
+    }
+    .inner-intro-box {
+        width: 100%;
+
+    }
+
+    .inner-intro-box > h1 {
+        margin-bottom: 1rem;
+    }
+    .inner-intro-box > p {
+        font-size: 15px;
+        line-height: 2rem;
+    }
 
     .inner-title-start {
         font-size: 39px !important;
@@ -544,6 +719,15 @@ body {
 /* iPhone 11–12–13–14 */
 
 @media (max-width: 430px) {
+
+        .inner-intro-box > h1 {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+    .inner-intro-box > p {
+        font-size: 15px;
+        line-height: 2rem;
+    }
 
     body.dark-theme {
         padding: 14px;
