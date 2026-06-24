@@ -7,9 +7,41 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="dark-theme">
-    
+    <div class="clue-modal-intro-overlay">
+        <div class="inner-clue-modal-intro">
+            <div class="modal-header">
+                <h3>🔐 Шифр Цезаря</h3>
+                <p>Сдвиг каждой буквы на 3 вперёд</p>
+            </div>
+            <div class="alphabet-block">
+                <div class="alphabet-title">
+                    Обычный алфавит
+                </div>
+                <div class="alphabet-row">
+                    А Б В Г Д Е Ё Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я
+                </div>
+
+            </div>
+                <div class="arrow">
+                    ↓
+                </div>
+            <div class="alphabet-block">
+                <div class="alphabet-title">
+                    Зашифрованный алфавит (+3)
+                </div>
+                <div class="alphabet-row encrypted">
+                    Г Д Е Ё Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я А Б В
+                </div>
+            </div>
+        <div class="modal-footer">
+            👉 Теперь каждая буква заменяется на следующую через 3 шага
+        </div>
+    </div>
+</div>
+        </div>
         <div class="intro-box">
             <div class="inner-intro-box">
+
                 <h1>
                     Пройди испытание и узнай свой уровень в кибер-мире
                 </h1>
@@ -19,39 +51,72 @@
                     кем ты стал: новичком, хакером или кибер-магистром.
                 </p>
             </div>
-    </div>
-    <div class="wrapper">
-        <h1 class="title">Викторина</h1>
-        <div id="root">
-            <!-- question -->
         </div>
-        <form id="answers">
-        </form>
-        <div class="modal-overlay">
-            <div class="modal-center">
-                <div class="modal-score">
-                    <button id="close">Закрыть окно</button>
+        <div class="wrapper">
+            <h1 class="title">Викторина</h1>
+            <div id="root">
+                <!-- question -->
+            </div>
+            <form id="answers">
+                
+            </form>
+            <div class="modal-overlay">
+                <div class="modal-center">
+                    <div class="modal-score">
+                        <button id="close">Закрыть окно</button>
+                    </div>  
                 </div>  
-            </div>  
-        </div>
-        <button id="changeTheme">Ответить</button>
-    </div>
-    <div class="xp-block">
-        <h2 class="">Количество набранных очков</h2>
-        <div class="xp-count">0</div>
-
-        <div class="progress-container">
-            <div class="progress-info">
-                <span>Прогресс прохождения</span>
-                <span id="progress-text">0%</span>
             </div>
+            <button id="changeTheme">Ответить</button>
+        </div>
+        <div class="wrapper-right">
+        <div class="shifr-block">
+        <div class="example">
 
-            <div class="question-bar">
-                <div class="question-bar-fill"></div>
+                <h3>🔐 Как шифровать слово?</h3>
+                <p>Передвигай каждую букву на <b>3 шага вперёд</b></p>
+            <div class="word-block">
+                <span>Исходное слово</span>
+                <div class="word">КОТ</div>
+            </div>
+            <div class="transform">
+                <div>К → Н</div>
+                <div>О → Р</div>
+                <div>Т → Х</div>
+            </div>
+            <div class="word-block result">
+                <span>Получится</span>
+                <div class="word">НРХ</div>
+            </div>
+            <div class="hint">
+            👉 Каждая буква прыгает вперёд на 3 места
             </div>
         </div>
+        </div>
 
-    </div>
+            <div class="xp-block">
+            <h2 class="">Количество набранных очков</h2>
+            <div class="xp-count">0</div>
+
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span>Прогресс прохождения</span>
+                    <span id="progress-text">0%</span>
+                </div>
+
+                <div class="question-bar">
+                    <div class="question-bar-fill"></div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="clue">
+                <button class="clue-button">
+                    Показать подсказку
+                </button>
+            </div>
+        </div>
+    <script src="js/openClueModal.js"></script>
     <script src="js/countxp.js"></script>
     <script src="js/closeModal.js"></script>
     <script src="js/questions.js"></script>

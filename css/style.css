@@ -8,18 +8,18 @@
 }
 
 body.dark-theme {
+
     min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 20px;
     gap: 1rem;
-    align-items: center;
-    background: linear-gradient(
-        135deg,
-        #141420,
-        #1b1033
-    );
+background: linear-gradient(
+    135deg,
+    #F7F2FF,
+    #EDE3FF
+);
 
     font-family: Arial, sans-serif;
 
@@ -38,9 +38,9 @@ body.dark-theme {
 
     min-width: 0;
 
-    background: #1f1b33;
+    background: #FCFAFF;
 
-    border: 2px solid #8b5cf6;
+    border: 2px solid #DCCBFF;
 
     border-radius: 24px;
 
@@ -51,6 +51,7 @@ body.dark-theme {
 
 
 }
+
 
 
 .title {
@@ -64,7 +65,7 @@ body.dark-theme {
     font-size: 24px;
 
     margin-bottom: 30px;
-
+    color: #4C3A69;
     line-height: 1.5;
 }
 
@@ -364,9 +365,62 @@ body.dark-theme {
 /* АДАПТИВ */
 /* ========================= */
 
-/* ========================= */
-/* АДАПТИВ */
-/* ========================= */
+.clue-modal-intro-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(56, 0, 147, 0.696);
+
+    z-index: 9999;
+
+    /* скрыто по умолчанию */
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(0.95);
+}
+
+.clue-modal-intro-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.inner-clue-modal-intro {
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #5b2ba7;
+    border-radius: 15px;
+    border: 1px solid #9333ea;
+}
+
+.text-input {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #6d28d9;
+    border-radius: 16px;
+    background: #2b2344;
+    color: white;
+    font-size: 18px;
+    outline: none;
+    transition: .3s;
+}
+
+.correct-border {
+border: 2px solid #60c915;
+}
+
+.incorrect-border {
+border: 2px solid #d50b0b;
+}
+
 .intro-box {
     position: fixed;
     inset: 0;
@@ -436,6 +490,145 @@ body {
 
     gap: 18px;
 }
+
+.example {
+        width: 100%;
+
+    padding: 22px;
+
+    margin-bottom: 24px;
+
+    background: #231d3d;
+
+    border: 2px solid #8b5cf6;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 24px rgba(139,92,246,.25);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+.clue {
+    width: 100%;
+
+    padding: 22px;
+
+    margin-bottom: 24px;
+
+    background: #231d3d;
+
+    border: 2px solid #8b5cf6;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 24px rgba(139,92,246,.25);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+/* Кнопка для подсказки */
+
+.clue-button {
+    position: relative;
+    padding: 16px 34px;
+
+    border: none;
+    border-radius: 18px;
+
+    background: linear-gradient(135deg, #5d2cff, #7f39fb);
+
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 25px rgba(126, 57, 251, 0.35);
+}
+
+/* RGB анимированная рамка */
+.clue-button::before {
+    content: "";
+    position: absolute;
+
+    inset: -3px;
+    border-radius: 20px;
+
+    background: linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        lime,
+        cyan,
+        blue,
+        violet,
+        red
+    );
+
+    background-size: 300%;
+
+    z-index: -2;
+
+    animation: rgbBorder 6s linear infinite;
+}
+
+/* внутренний слой */
+.clue-button::after {
+    content: "";
+    position: absolute;
+
+    inset: 2px;
+    border-radius: 16px;
+
+    background: linear-gradient(135deg, #5d2cff, #7f39fb);
+
+    z-index: -1;
+}
+
+/* hover эффект */
+.clue-button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(162, 89, 255, 0.6);
+}
+
+/* при нажатии */
+.clue-button:active {
+    transform: scale(0.96);
+}
+
+/* подсветка рамки при наведении */
+.clue-button:hover::before {
+    filter: blur(4px);
+}
+
+/* анимация RGB */
+@keyframes rgbBorder {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 300%;
+    }
+}
+
+
 
 .xp-title {
     font-size: 22px;

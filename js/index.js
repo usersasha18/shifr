@@ -20,82 +20,157 @@ toggleButton.addEventListener('click', checkAnswer);
 showQuestion();
 
 function showQuestion() {
-    if (answerIndex < data.length) {
-        answers.innerHTML = "";
-        root.innerHTML = `${"<span class='root-text'>" + data[answerIndex]['question'] +"</span>" + "<br>" + data[answerIndex]['text']}`;
-        for (const [index, value] of data[answerIndex]["answers"].entries()) {
+    if (answerIndex >= data.length) return;
+
+    const task = data[answerIndex];
+
+    answers.innerHTML = "";
+
+    root.innerHTML = `
+        <span class='root-text'>${task.question}</span><br>
+        ${task.text}
+    `;
+
+    // === CHOICE ===
+    if (task.type === "choice") {
+        for (const [index, value] of task.answers.entries()) {
             answers.innerHTML += `
-            <label class="answer-tile">
-                <input type="radio" name="answer" value="${index + 1}">
-                <span>${value}</span>
-            </label>
+                <label class="answer-tile">
+                    <input type="radio" name="answer" value="${index}">
+                    <span>${value}</span>
+                </label>
             `;
         }
-    } else {
-        return;
     }
-}
+
+    // === INPUT ===
+    if (task.type === "input") {
+        answers.innerHTML = `
+            <input 
+                type="text" 
+                id="textAnswer" 
+                placeholder="Введите ответ"
+                class="text-input"
+            >
+        `;
+        }
+    };
+
 
 function checkAnswer() {
-    const answersList = document.querySelectorAll('input[name="answer"]');
-
-    let selected = null;
-
-    for (const a of answersList) {
-        if (a.checked) {
-            selected = a;
-            break;
-        }
-    }
-
-    if (!selected) return;
-
-    const radioAnswer = parseInt(selected.value);
-    const correctAnswer = data[answerIndex]['correct'];
-
-    const allLabels = document.querySelectorAll('.answer-tile');
+    const task = data[answerIndex];
 
     toggleButton.disabled = true;
 
-    if (radioAnswer === correctAnswer) {
+    // ===================
+    // INPUT
+    // ===================
+    if (task.type === "input") {
 
-        score++;
-        xp += 100;
+        const answerInput = document.querySelector(".text-input");
 
-        allLabels[radioAnswer - 1].classList.add("correct");
+        if (!answerInput) return;
 
-    } else {
+        const userAnswer =
+            answerInput.value.trim().toUpperCase();
 
-        wrong++;
-        xp -= 50;
-        if (xp < 0) xp = 0;
+        const correctAnswer =
+            task.correctAnswer.toUpperCase();
 
-        allLabels[radioAnswer - 1].classList.add("wrong");
+        if (userAnswer === correctAnswer) {
 
-        showRetryModal();
+            score++;
+            xp += 100;
+
+            answerInput.classList.add("correct-border");
+
+        } else {
+
+            wrong++;
+            xp -= 50;
+
+            if (xp < 0) xp = 0;
+
+            answerInput.classList.add("incorrect-border");
+
+            showRetryModal();
+        }
+
     }
 
-    // 🔥 ВСЕГДА обновляем прогресс одинаково
-    const progress = ((answerIndex + 1) / data.length) * 100;
+    // ===================
+    // RADIO
+    // ===================
+    if (task.type === "choice") {
 
-    document.querySelector('.question-bar-fill').style.width =
-        progress + '%';
+        const answersList =
+            document.querySelectorAll(
+                'input[name="answer"]'
+            );
 
-    document.querySelector('#progress-text').textContent =
-        Math.round(progress) + '%';
+        let selected = null;
 
-    document.querySelector('.xp-count').textContent =
-        xp + ' XP';
+        for (const a of answersList) {
+            if (a.checked) {
+                selected = a;
+                break;
+            }
+        }
 
+        if (!selected) return;
+
+        const radioAnswer =
+            Number(selected.value);
+
+        const allLabels =
+            document.querySelectorAll(
+                ".answer-tile"
+            );
+
+        if (radioAnswer === task.correct) {
+
+            score++;
+            xp += 100;
+
+            allLabels[radioAnswer]
+                .classList.add("correct");
+
+        } else {
+
+            wrong++;
+            xp -= 50;
+
+            if (xp < 0) xp = 0;
+
+            allLabels[radioAnswer]
+                .classList.add("wrong");
+
+            showRetryModal();
+        }
+    }
+        const progress = ((answerIndex + 1) / data.length) * 100;
+
+        document.querySelector('.question-bar-fill').style.width =
+            progress + '%';
+
+        document.querySelector('#progress-text').textContent =
+            Math.round(progress) + '%';
+
+        document.querySelector('.xp-count').textContent =
+            xp + ' XP';
+
+    // общий переход
     setTimeout(() => {
         answerIndex++;
+
         toggleButton.disabled = false;
+
         showQuestion();
+
         checkFinish();
+
     }, 700);
-
 }
-
 
 function showRetryModal() {
     modalScore.style.display = "flex";
