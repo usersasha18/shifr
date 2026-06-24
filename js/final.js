@@ -32,7 +32,9 @@ function showFinalModal() {
         body: JSON.stringify({
             name: myObject.name,
             score: myObject.score,
-            wrong: myObject.wrong
+            wrong: myObject.wrong,
+            total: myObject.total,
+            xp: myObject.xp
         })
     })
     .then(res => res.json())
