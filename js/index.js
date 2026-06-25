@@ -26,13 +26,37 @@ function showQuestion() {
 
     answers.innerHTML = "";
 
-    root.innerHTML = `
-        <span class='root-text'>${task.question}</span><br>
-        ${task.text}
-    `;
+    // root.innerHTML = `
+    //     <span class='root-text'>${task.question}</span><br>
+    //     ${task.text}
+    // `;
 
+    root.innerHTML = `
+    <span class="root-text">
+        ${task.question}
+    </span>
+
+    <br>
+
+    ${task.text}
+
+    ${
+        task.img
+            ? `
+            <div class="question-image-wrapper">
+                <img
+                    src="${task.img}"
+                    class="question-image"
+                    alt="Подсказка"
+                >
+            </div>
+            `
+            : ""
+    }
+    `;
     // === CHOICE ===
     if (task.type === "choice") {
+        console.log(task)
         for (const [index, value] of task.answers.entries()) {
             answers.innerHTML += `
                 <label class="answer-tile">
@@ -52,6 +76,7 @@ function showQuestion() {
                 placeholder="Введите ответ"
                 class="text-input"
             >
+            // <img src=''/>
         `;
         }
     };

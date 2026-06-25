@@ -18,13 +18,11 @@ body.dark-theme {
     justify-content: center;
 
     align-items: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #141420,
-            #1b1033
-        );
+    background: linear-gradient(
+        135deg,
+        #F7F2FF,
+        #EDE3FF
+    );
 
     color: white;
 }
@@ -64,7 +62,8 @@ body.dark-theme {
     content: "";
     position: absolute;
     inset: 2px;
-    background: #1f1b33;
+
+    background: #FCFAFF;
     border-radius: 22px;
 
     z-index: -1;
@@ -83,21 +82,27 @@ body.dark-theme {
 ul {
     list-style: none;
 }
+ul > li {
+    color: #4C3A69;
+        opacity: 0.8;
+}
 .start-page {
     width: 100%;
 
     max-width: 760px;
 
-    background: #1f1b33;
+    background: #FCFAFF;
 
-    border: 2px solid #8b5cf6;
+    border: 2px solid #DCCBFF;
 
     border-radius: 28px;
 
     padding: 48px;
 
     box-shadow:
-        0 0 40px rgba(139, 92, 246, .25);
+        0 18px 45px
+        rgba(167, 139, 250, .18);
+
 
     text-align: center;
 }
@@ -180,8 +185,8 @@ ul {
 .score-content h2 {
     text-align: center;
 
-    color: #d8b4fe;
-
+    color: #4C3A69;
+    opacity: 0.8;
     margin-bottom: 24px;
 
     font-size: 28px;
@@ -192,8 +197,9 @@ ul {
 
     border: none;
 
-    padding: 0;
-
+    padding: 0; 
+    color: #4C3A69;
+    opacity: 0.8;
     margin-bottom: 14px;
 
     line-height: 1.6;
@@ -201,6 +207,10 @@ ul {
     font-size: 18px;
 }
 
+.score-content > h1 {
+    color: #d8b4fe;
+    
+}
 /* ====================== */
 /* Планшеты */
 /* ====================== */
